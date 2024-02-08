@@ -6,18 +6,17 @@ require('dotenv').config();
 
 exports.registerUser = async (req, res) => {
   const { username, email, password, roles } = req.body;
-
   try {
-    const user = new User({ username, email, password, roles });
+    const user = new User({ username, email, password,roles });
     await user.save();
-
+  
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
-    console.error('Error during registration:', error);
-    res.status(500).json({ message: 'Error during registration' });
+    console.error('Error during user registration:', error);
+    res.status(500).json({ message: 'Error during user registration', error: error.message });
   }
+  
 };
-// controllers/authController.js
 
 
 exports.loginUser = async (req, res) => {
