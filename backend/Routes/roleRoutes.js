@@ -1,7 +1,7 @@
 // routes/roleRoutes.js
 const express = require('express');
 const router = express.Router();
-const roleController = require('../controllers/roleController');
+const roleController = require('../Controllers/roleController');
 
 router.get('/roles', roleController.getAllRoles);
 router.post('/roles', roleController.createRole);

@@ -1,5 +1,8 @@
 //app.js
 const express= require("express")
+const authRoutes = require('./Routes/UserRoutes');
+const roleRoutes = require('./Routes/roleRoutes');
+const permissionRoutes = require('./Routes/permissionRoutes');
 // const cookieParser = require('cookie-parser')
 // const userRouter=require('./Routes/UserRoutes')
 // const cors = require('cors');
@@ -17,6 +20,9 @@ app.use(express.json());
 
 //json middleware
 app.use(express.json())
+app.use('/auth', authRoutes);
+app.use('/role', roleRoutes);
+app.use('/permission', permissionRoutes);
 
 // app.use('/users', userRouter);
 
