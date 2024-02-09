@@ -6,7 +6,7 @@ const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  roles: [{ type: String }], // Array of roles assigned to the user
+  roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }],
 });
 
 const User = mongoose.model('User', userSchema);

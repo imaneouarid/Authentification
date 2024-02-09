@@ -10,3 +10,16 @@ exports.getAllPermissions = async (req, res) => {
     res.status(500).json({ message: 'Error fetching permissions' });
   }
 };
+exports.createPermission = async (req, res) => {
+    const { name } = req.body;
+  
+    try {
+      const newPermission = new Permission({ name });
+      await newPermission.save();
+  
+      res.status(201).json({ message: 'Permission created successfully', permission: newPermission });
+    } catch (error) {
+      console.error('Error creating permission:', error);
+      res.status(500).json({ message: 'Error creating permission' });
+    }
+  };
