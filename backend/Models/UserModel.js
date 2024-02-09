@@ -6,7 +6,7 @@ const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }],
+  roles: [{ type: String }], // Change the type to String
 });
 
 const User = mongoose.model('User', userSchema);

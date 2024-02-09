@@ -1,28 +1,26 @@
 
 import './App.css'
-import { BrowserRouter as Router, Routes, Route,Navigate} from 'react-router-dom'
-import HomePage from '../src/pages/HomePage'
-import LoginPage from '../src/pages/LoginPage'
-import DashboardTask from '../src/pages/DashboardTask'
-import RegisterPage from '../src/pages/RegisterPage'
+// App.jsx
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
+import Register from '../src/pages/register'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 
-function App() {
-  
+
+
+const App = () => {
   return (
-    <> 
-    <Router>
-      <Routes>
-        <Route exact path="/" element={<HomePage/>} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/dashboard" element={<DashboardTask />} />
-      </Routes>
-    </Router>
-    
-    </>
-  )
-}
+    <Provider store={store}>
+      <Router>  
+        <Register />
+        </Router>  
+
+    </Provider>
+  );
+};
+
 
 export default App
 
