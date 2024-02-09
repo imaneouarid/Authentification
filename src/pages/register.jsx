@@ -5,6 +5,7 @@ import { setUser } from '../actions/authActions';
 import { Link } from 'react-router-dom';
 
 
+
 const Register = ({ dispatch }) => {
   const [username, setName] = useState('');
   const [email, setEmail] = useState('');

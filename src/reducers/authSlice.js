@@ -1,28 +1,27 @@
+// reducers/authSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: null,
-    roles: [],
-    // Other authentication-related state...
+    token: null,
   },
   reducers: {
-    setUser: (state, action) => {
-      state.user = action.payload;
+    login: (state, action) => {
+      state.user = action.payload.user;
+      state.token = action.payload.accessToken;
     },
-    setRoles: (state, action) => {
-      state.roles = action.payload;
-    },
-    // Other authentication-related reducers...
-    deleteUser: (state, action) => {
-      // Implement logic to update state after deleting a user
-      // You may filter out the deleted user from the state
+    logout: (state) => {
+      state.user = null;
+      state.token = null;
     },
   },
 });
 
-export const { setUser, setRoles, deleteUser } = authSlice.actions;
+export const { login, logout } = authSlice.actions;
+
+export const selectUser = (state) => state.auth.user;
+export const selectToken = (state) => state.auth.token;
 
 export default authSlice.reducer;
-
