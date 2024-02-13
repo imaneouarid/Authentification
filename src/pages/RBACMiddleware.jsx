@@ -7,6 +7,7 @@ const RBACMiddleware = ({ user, allowedRoles, children }) => {
   if (user && allowedRoles.includes(user.roles)) {
     return <>{children}</>;
   } else {
+    console.log();
     // Redirect or render an error message for unauthorized access
     return <Redirect to="/unauthorized" />;
   }

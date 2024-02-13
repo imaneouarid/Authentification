@@ -1,4 +1,4 @@
-//app.js
+//Server.js
 const express= require("express")
 const authRoutes = require('./Routes/UserRoutes');
 const roleRoutes = require('./Routes/roleRoutes');

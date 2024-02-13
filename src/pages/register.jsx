@@ -20,7 +20,7 @@ const Register = ({ dispatch }) => {
         username,
         email,
         password,
-        roles: ['user'], // Include the desired default role or roles here
+        roles: ['65c61f5f0e200a2094116324'], // Include the desired default role or roles here
 
       });
 

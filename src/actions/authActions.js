@@ -1,20 +1,20 @@
-// actions/authActions.js
 export const setUser = (user) => {
     return {
-      type: 'SET_USER',
+      type: 'auth/setUser',
       payload: user,
     };
   };
   
   export const clearUser = () => {
     return {
-      type: 'CLEAR_USER',
+      type: 'auth/clearUser',
     };
   };
   
-export const setToken = (token) => {
+  export const setToken = (token) => {
     return {
-      type: 'SET_TOKEN',
-      payload: token,
+      type: 'auth/login',
+      payload: { token }, // Adjust the payload structure
     };
   };
+  

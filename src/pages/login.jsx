@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../reducers/authSlice';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import store from '../store';
 
 
 const LoginPage = () => {
@@ -18,17 +19,29 @@ const LoginPage = () => {
 
     try {
         const response = await axios.post("http://localhost:3000/auth/login", { username, password });
+        console.log('Response:', response.data);
+        console.log('Received Token:', response.data.token);
+
+        // Set the Authorization header for subsequent requests
+        axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
+
         dispatch(login(response.data));
-        navigate('/UserList');
-      } catch (error) {
+        console.log('Redux State:', store.getState().auth);
+        localStorage.setItem('token', response.data.token);
+
+
+        navigate('/profile');
+    } catch (error) {
         console.error("Error during login:", error);
     
         if (error.response && error.response.status) {
-          if (error.response.status === 404) {
+          if (error.response.status === 401) {
             window.alert("User not found");
-          } else if (error.response.status === 400) {
+          } else if (error.response.status === 404) {
             window.alert("Username or password is incorrect");
           } else {
+            console.error("Detailed error:", error);
+
             window.alert("An error occurred during login");
           }
         } else {
