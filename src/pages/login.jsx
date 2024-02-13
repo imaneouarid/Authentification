@@ -29,7 +29,7 @@ const LoginPage = () => {
         console.log('Redux State:', store.getState().auth);
         localStorage.setItem('token', response.data.token);
 
-
+  
         navigate('/profile');
     } catch (error) {
         console.error("Error during login:", error);

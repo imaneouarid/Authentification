@@ -61,7 +61,7 @@ exports.loginUser = async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    const user = await User.findOne({ username, password }).populate('roles');;
+    const user = await User.findOne({ username, password }).populate('roles');
 
     if (!user) {
       console.log('User not found');
